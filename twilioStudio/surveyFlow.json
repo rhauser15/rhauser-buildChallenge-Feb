@@ -1,0 +1,678 @@
+{
+    "description": "Simple Survey",
+    "states": [
+      {
+        "name": "Trigger",
+        "type": "trigger",
+        "transitions": [
+          {
+            "event": "incomingMessage"
+          },
+          {
+            "event": "incomingCall"
+          },
+          {
+            "next": "question_1",
+            "event": "incomingRequest"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -60,
+            "y": -490
+          }
+        }
+      },
+      {
+        "name": "question_1",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "check_response_1",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": 0,
+            "y": -220
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "Hello {{flow.data.name}}. On a scale of 1-5, how would you rate your experience with Beyond Inc?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "check_response_1",
+        "type": "split-based-on",
+        "transitions": [
+          {
+            "next": "unknown_answer_1",
+            "event": "noMatch"
+          },
+          {
+            "next": "writeFunction_1",
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "1-4",
+                "arguments": [
+                  "{{widgets.question_1.inbound.Body}}"
+                ],
+                "type": "regex",
+                "value": "^(?:[1-3]|0[1-3]|4)$"
+              }
+            ]
+          },
+          {
+            "next": "writeFunction_1_2",
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to 5",
+                "arguments": [
+                  "{{widgets.question_1.inbound.Body}}"
+                ],
+                "type": "equal_to",
+                "value": "5"
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "input": "{{widgets.question_1.inbound.Body}}",
+          "offset": {
+            "x": -20,
+            "y": 20
+          }
+        }
+      },
+      {
+        "name": "unknown_answer_1",
+        "type": "send-message",
+        "transitions": [
+          {
+            "next": "question_1",
+            "event": "sent"
+          },
+          {
+            "event": "failed"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -570,
+            "y": 80
+          },
+          "from": "{{flow.channel.address}}",
+          "to": "{{contact.channel.address}}",
+          "body": "I'm sorry, I didn't understand. Please enter a number from 1 - 5."
+        }
+      },
+      {
+        "name": "question_2_improve",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "writeFunction_2_2",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -590,
+            "y": 580
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "How could we improve your experience in the future?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "check_response_3",
+        "type": "split-based-on",
+        "transitions": [
+          {
+            "next": "unknown_answer_3",
+            "event": "noMatch"
+          },
+          {
+            "next": "writeFunction_3",
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "1-4",
+                "arguments": [
+                  "{{widgets.question_3.inbound.Body}}"
+                ],
+                "type": "regex",
+                "value": "^(?:[1-3]|0[1-3]|4)$"
+              }
+            ]
+          },
+          {
+            "next": "writeFunction_3_2",
+            "event": "match",
+            "conditions": [
+              {
+                "friendly_name": "If value equal_to 5",
+                "arguments": [
+                  "{{widgets.question_3.inbound.Body}}"
+                ],
+                "type": "equal_to",
+                "value": "5"
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "input": "{{widgets.question_3.inbound.Body}}",
+          "offset": {
+            "x": -110,
+            "y": 1330
+          }
+        }
+      },
+      {
+        "name": "unknown_answer_3",
+        "type": "send-message",
+        "transitions": [
+          {
+            "next": "question_3",
+            "event": "sent"
+          },
+          {
+            "event": "failed"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -580,
+            "y": 1110
+          },
+          "from": "{{flow.channel.address}}",
+          "to": "{{contact.channel.address}}",
+          "body": "I'm sorry, I didn't understand. Please enter a number from 1 - 5."
+        }
+      },
+      {
+        "name": "question_3",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "check_response_3",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -90,
+            "y": 1110
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "On a scale of 1-5, how would you rate your experience with your debt consolidation representative?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "thank_you",
+        "type": "send-message",
+        "transitions": [
+          {
+            "event": "sent"
+          },
+          {
+            "event": "failed"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -40,
+            "y": 2750
+          },
+          "from": "{{flow.channel.address}}",
+          "to": "{{contact.channel.address}}",
+          "body": "Thank you so much for your feedback!"
+        }
+      },
+      {
+        "name": "question_2_enjoy",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "writeFunction_2",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": 590,
+            "y": 570
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "What did you enjoy the most during your experience?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "question_4_improve",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "writeFunction_4_improve",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": -570,
+            "y": 1800
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "How could we improve your experience in the future?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "question_4_enjoy",
+        "type": "send-and-wait-for-reply",
+        "transitions": [
+          {
+            "next": "writeFunction_4_enjoy",
+            "event": "incomingMessage"
+          },
+          {
+            "event": "timeout"
+          },
+          {
+            "event": "deliveryFailure"
+          }
+        ],
+        "properties": {
+          "offset": {
+            "x": 610,
+            "y": 1770
+          },
+          "from": "{{flow.channel.address}}",
+          "body": "What did you enjoy the most during your experience?",
+          "timeout": "3600"
+        }
+      },
+      {
+        "name": "writeFunction_4_enjoy",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "writeFunction_complete",
+            "event": "success"
+          },
+          {
+            "next": "writeFunction_complete",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": 620,
+            "y": 2110
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q4_freeForm",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_4_enjoy.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_4_improve",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "writeFunction_complete",
+            "event": "success"
+          },
+          {
+            "next": "writeFunction_complete",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": -560,
+            "y": 2100
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q4_freeForm",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_4_improve.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_3",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_4_improve",
+            "event": "success"
+          },
+          {
+            "next": "question_4_improve",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": -590,
+            "y": 1500
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q3_agentExperience",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_3.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_2",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_3",
+            "event": "success"
+          },
+          {
+            "next": "question_3",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": 590,
+            "y": 790
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q2_freeForm",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_2_enjoy.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_complete",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "thank_you",
+            "event": "success"
+          },
+          {
+            "next": "thank_you",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": -20,
+            "y": 2460
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "customerCompleted",
+              "key": "columnName"
+            },
+            {
+              "value": "true",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_3_2",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_4_enjoy",
+            "event": "success"
+          },
+          {
+            "next": "question_4_enjoy",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": 590,
+            "y": 1480
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q3_agentExperience",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_3.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_2_2",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_3",
+            "event": "success"
+          },
+          {
+            "next": "question_3",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": -590,
+            "y": 780
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q2_freeForm",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_2_improve.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_1",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_2_improve",
+            "event": "success"
+          },
+          {
+            "next": "question_2_improve",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": -580,
+            "y": 350
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q1_overallExperience",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_1.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      },
+      {
+        "name": "writeFunction_1_2",
+        "type": "run-function",
+        "transitions": [
+          {
+            "next": "question_2_enjoy",
+            "event": "success"
+          },
+          {
+            "next": "question_2_enjoy",
+            "event": "fail"
+          }
+        ],
+        "properties": {
+          "service_sid": "ZS6e2703a423143cd37b62fe11150d749d",
+          "environment_sid": "ZE3d5ac3e3fe0b73c218d17241832d911b",
+          "offset": {
+            "x": 570,
+            "y": 340
+          },
+          "function_sid": "ZH0a7982c732e42c18d52d382fcae9131b",
+          "parameters": [
+            {
+              "value": "q1_overallExperience",
+              "key": "columnName"
+            },
+            {
+              "value": "{{widgets.question_1.inbound.Body}}",
+              "key": "value"
+            },
+            {
+              "value": "{{flow.data.id}}",
+              "key": "id"
+            }
+          ],
+          "url": "https://buildchallengeplaceholder-6271.twil.io/write"
+        }
+      }
+    ],
+    "initial_state": "Trigger",
+    "flags": {
+      "allow_concurrent_calls": true
+    }
+  }

@@ -1,0 +1,11 @@
+function surveyRun() {
+  var url = "https://buildchallengeplaceholder-6271.twil.io/provision";
+  var options = {
+    "method": "post",
+    
+};
+var response = UrlFetchApp.fetch(url, options);
+}
+
+//copy/paste into new script on script.google.com
+//Select Triggers on left-hand side bar --> Add Trigger --> Daily Timer --> Select Time --> Save
