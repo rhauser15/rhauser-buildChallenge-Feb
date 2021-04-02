@@ -4,15 +4,15 @@ Build Challenge Use Case: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_
 
 General workflow centered around a bulk-SMS survey sent to Beyond Inc's customers on a regular basis. 
 
-## What is it
+## What is it?
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
-You can view a currently deployed demo version here: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_wbc0StpTcakgtWMXylB-u2sDA/edit
+**You can view a currently deployed demo version here**: https://video-app-4633-7409-dev.twil.io/?passcode=60388446337409#/tables/triggerFunction
 
 Please feel free to add your own number to the database for testing. 
 
-Video Demo: xxx
+**Video Demo**: xxx
 
 ## User Workflow
 
@@ -32,15 +32,15 @@ Once completed, survey data will automatically be populated into the airtable da
 
 ## Execution flow
 
-1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
-2. The /provision function will then count the total number of records in the database. 
-3. Once finished /provision will call /readExecute2. This function will execute studio flows in batches. (Adjustable from 1 - 100 studio flows at a time). 
-4. /readExecute2 will continue calling itself until the entire database of users has been surveyed. Users that have not completed a survey should be skipped. 
-5. The studio flows will ask the users a combination of Free Form/numerically rated questions. Questions 2 and 4 will change slighly based on results given by initial responses.
-6. Response data will be written by calling the /write function when a user responds. If the entire survey is completed, the "customerCompleted" attribute of the database will be set to "true". 
+   1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
+   2. The /provision function will then count the total number of records in the database. 
+   3. Once finished /provision will call /readExecute2. This function will execute studio flows in batches. (Adjustable from 1 - 100 studio flows at a time). 
+   4. /readExecute2 will continue calling itself until the entire database of users has been surveyed. Users that have not completed a survey should be skipped. 
+   5. The studio flows will ask the users a combination of Free Form/numerically rated questions. Questions 2 and 4 will change slighly based on results given by initial responses.
+   6. Response data will be written by calling the /write function when a user responds. If the entire survey is completed, the "customerCompleted" attribute of the database will be set to "true". 
 
 
-Limits: Twilio currently limits the API to 100 concurrent inbound calls. This is why the readExecute2 function is not recommended to be set past 100 records/executions. 
+**Limits**: Twilio currently limits the API to 100 concurrent inbound calls. This is why the readExecute2 function is not recommended to be set past 100 records/executions. 
 
 The Airtable API is also limited to 100 results per API call. This is why the provision function will only receive a "page" of 100 records at a time. 
 
@@ -50,15 +50,15 @@ The Airtable API is also limited to 100 results per API call. This is why the pr
 
 ## Asset Inventory
 
-React Application: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
+**React Application**: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
 
-Studio Flow: Twilio Studio provides the backend functionality of the SMS survey. (Folder: twilioStudio)
+**Studio Flow**: Twilio Studio provides the backend functionality of the SMS survey. (Folder: twilioStudio)
 
-Twilio Functions: The functions incuded are responsible for executing the studio flows and also writing the survey results back to the customer data. (Folder: twilioFunctions)
+**Twilio Functions**: The functions incuded are responsible for executing the studio flows and also writing the survey results back to the customer data. (Folder: twilioFunctions)
 
-Google Apps Script: Google Apps Script provides an automated trigger to execute the survey flow around at a time specified by the Admin. (Folder: googleAppsScript)
+**Google Apps Script**: Google Apps Script provides an automated trigger to execute the survey flow around at a time specified by the Admin. (Folder: googleAppsScript)
 
-Airtable: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
+**Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
 
 
 ## Prerequisites to Deploy
@@ -120,7 +120,7 @@ When this application is deployed, it will automatically populate with my own te
 
 ## Airtable configuration
 
-The Airtable configuration is fairly simple on the React end. Only the iframe references in src/pages/tables/Bootstrap.js need to be modified. Please see the following to receive your own iframe link:
+The Airtable configuration is fairly simple on the React end. Only the iframe references in $src/pages/tables/Bootstrap.js need to be modified. Please see the following to receive your own iframe link:
 
 https://support.airtable.com/hc/en-us/articles/217846478-Embedding-a-view-or-base
 
@@ -145,9 +145,9 @@ Each of the included files should be copy/pasted into a twilio functions service
     *twilioFunctions/provision.js
 
 Once implemented in Functions, you will need to change the URL references in:
- *provision.js --> Point towards new URL for readExecute2
- *readExecute2.js --> point towards new URL for readExecute2
- *src/pages/triggerFunction --> point form submission link towards URL for Provision hosted in twilio. 
+    *provision.js --> Point towards new URL for readExecute2
+    *readExecute2.js --> point towards new URL for readExecute2
+    *src/pages/triggerFunction --> point form submission link towards URL for Provision hosted in twilio. 
 
 
 ## Google Apps Script
