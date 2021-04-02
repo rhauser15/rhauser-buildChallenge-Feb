@@ -16,7 +16,7 @@ General workflow centered around a bulk-SMS survey sent to Beyond Inc's customer
 [Functions](#functions)
 [Google Apps Script](#googleappssript)
 [sources](#sources)
-.    
+...snip...     
 
 
 
