@@ -1,10 +1,9 @@
-# Beyond Inc Growth Challenge
-
-### You can view a currently deployed demo version here: https://BeyondInc.tk ###
-
-Build Challenge Use Case: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_wbc0StpTcakgtWMXylB-u2sDA/edit
-
-General workflow centered around a bulk-SMS survey sent to Beyond Inc's customers on a regular basis. 
+# Beyond Inc Growth Challenge <br>
+<p align="center" >
+   <H3 align ="center">
+Demo: https://BeyondInc.tk <br>
+   </H3>
+</p>
 
 ##### Table of Contents  
 [Overview](#overview)<br/>
