@@ -7,10 +7,12 @@ Build Challenge Use Case: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_
 General workflow centered around a bulk-SMS survey sent to Beyond Inc's customers on a regular basis. 
 
 ##### Table of Contents  
-[Overview](#overview)  
-[Emphasis](#emphasis)  
+[Overview](#overview)
+[User Workflow](#userworkflow)
+[Deploy](#emphasis)  
 
 
+## Overview
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
