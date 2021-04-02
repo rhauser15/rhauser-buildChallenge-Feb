@@ -7,17 +7,17 @@ Build Challenge Use Case: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_
 General workflow centered around a bulk-SMS survey sent to Beyond Inc's customers on a regular basis. 
 
 ##### Table of Contents  
-[Overview](#overview)
-[Asset Inventory](#assetinventory)
+[Overview](#overview)<br/>
+[Asset Inventory](#assetinventory)<br/>
 [User Workflow](#userworkflow)  
-[Execution Flow](#executionflow)
-[Deployment Process](#deployment)
-[Airtable](#airtable)
-[Functions](#functions)
-[Google Apps Script](#googleappssript)
-[sources](#sources)
-...snip...     
-<a name="headers"/>
+[Execution Flow](#executionflow)<br/>
+[Deployment Process](#deployment)<br/>
+[Airtable](#airtable)<br/>
+[Functions](#functions)<br/>
+[Google Apps Script](#googleappssript)<br/>
+[sources](#sources)<br/>
+   
+
 
 
 ## Overview
