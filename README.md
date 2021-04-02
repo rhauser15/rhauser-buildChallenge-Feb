@@ -6,7 +6,7 @@ General workflow centered around a bulk-SMS survey sent to Beyond Inc's customer
 
 ## What is it
 
-This is a React Application hosted entirely on twilio through the use of Twilio Functions, Assets and Studio. 
+This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
 You can view a currently deployed demo version here: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_wbc0StpTcakgtWMXylB-u2sDA/edit
 
@@ -14,10 +14,43 @@ Please feel free to add your own number to the database for testing.
 
 Video Demo: xxx
 
+## User Workflow
+
+Beyond Inc users have the ability to access the React Frontend to:
+
+    *Examine an overview of all operations including aggregated customer feedback. (Overview)
+    *Verify customer data through linked Airtable database. (Customer Outreach -> Customer Data)
+    *Manually add a customer to the database. (Customer Outreach -> Add Customer)
+    *Manually Trigger Studio flow to execute customer survey (Customer Outreach -> Trigger Survey)
+
+While users can manually add data, the idea is that the customer database will likely be populated by another service. (When customer completes transaction etc.)
+
+The Studio flow is also scheduled to run at 12PM MST daily via Google Apps Script, but a manual run can also be triggered above. 
+
+Once completed, survey data will automatically be populated into the airtable database and the aggreagated data overview will be updated. 
+
+
+## Execution flow
+
+1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
+2. The /provision function will then count the total number of records in the database. 
+3. Once finished /provision will call /readExecute2. This function will execute studio flows in batches. (Adjustable from 1 - 100 studio flows at a time). 
+4. /readExecute2 will continue calling itself until the entire database of users has been surveyed. Users that have not completed a survey should be skipped. 
+5. The studio flows will ask the users a combination of Free Form/numerically rated questions. Questions 2 and 4 will change slighly based on results given by initial responses.
+6. Response data will be written by calling the /write function when a user responds. If the entire survey is completed, the "customerCompleted" attribute of the database will be set to "true". 
+
+
+Limits: Twilio currently limits the API to 100 concurrent inbound calls. This is why the readExecute2 function is not recommended to be set past 100 records/executions. 
+
+The Airtable API is also limited to 100 results per API call. This is why the provision function will only receive a "page" of 100 records at a time. 
+
+
+
+
 
 ## Asset Inventory
 
-React Application: This is a single page react application for which I heavily modified a template I will reference below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
+React Application: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
 
 Studio Flow: Twilio Studio provides the backend functionality of the SMS survey. (Folder: twilioStudio)
 
@@ -62,6 +95,7 @@ This app requires an additional plugin. Install the CLI plugin with:
     $ twilio plugins:install @twilio-labs/plugin-rtc
 
 ## Deploy the app to Twilio
+Again, this plugin is originally intended to deploy a video application, but will work fine for our purposes. There may be an additional token/recording function in your deployment, but these will not affect the application's functionality. 
 
 Before deploying the app, make sure you are using the correct account on the Twilio CLI (using the command `twilio profiles:list` to check). 
 The app is deployed to Twilio with a single command:
@@ -71,11 +105,10 @@ The app is deployed to Twilio with a single command:
 This performs the following steps:
 
 * Builds the React app in the `src` directory
-* Generates a random code used to access the Video app
-* Deploys the React app and token server function as a Twilio Serverless service.
-* Prints the URL for the app and the passcode.
+* Deploys the React app as a Twilio Serverless service.
+* Prints the URL for the app.
 
-**NOTE:** The Twilio Function that provides access tokens via a passcode should *NOT* be used in a production environment. This token server supports seamlessly getting started with the collaboration app, and while convenient, the passcode is not secure enough for production environments. You should use an authentication provider to securely provide access tokens to your client applications. You can find more information about Programmable Video access tokens [in this tutorial](https://www.twilio.com/docs/video/tutorials/user-identity-access-tokens). **As a precaution, the passcode will expire after one week**. To generate a new passcode, redeploy the app:
+Overrwrite existing deployment: 
 
     $ npm run deploy:twilio-cli -- --override
 
