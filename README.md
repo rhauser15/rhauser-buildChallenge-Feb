@@ -8,7 +8,7 @@ General workflow centered around a bulk-SMS survey sent to Beyond Inc's customer
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
-**You can view a currently deployed demo version here**: https://video-app-4633-7409-dev.twil.io/?passcode=60388446337409#/tables/triggerFunction
+**You can view a currently deployed demo version here**: https://BeyondInc.tk
 
 Please feel free to add your own number to the database for testing. 
 
