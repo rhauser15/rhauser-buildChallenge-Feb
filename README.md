@@ -157,7 +157,7 @@ Implementing the Google Apps Script Trigger is fairly simple and the instruction
 
 ## Sources
 
-I read/borrowed from the following  sources/repos that help give me inspiration for this idea:
+I read/borrowed from the following  sources/repos for this idea:
 
 Free React Template: https://themesberg.com/product/dashboard/volt-react
 
