@@ -1,4 +1,4 @@
-# Beyond Inc Growth Challenge -- How did we do? 
+# Beyond Inc Growth Challenge
 
 ### You can view a currently deployed demo version here: https://BeyondInc.tk ###
 
@@ -6,7 +6,11 @@ Build Challenge Use Case: https://docs.google.com/document/d/1nH5MG0Smflswb2iWD_
 
 General workflow centered around a bulk-SMS survey sent to Beyond Inc's customers on a regular basis. 
 
-## What is it?
+##### Table of Contents  
+[Overview](#overview)  
+[Emphasis](#emphasis)  
+
+
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
