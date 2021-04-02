@@ -8,8 +8,16 @@ General workflow centered around a bulk-SMS survey sent to Beyond Inc's customer
 
 ##### Table of Contents  
 [Overview](#overview)
-[User Workflow](#userworkflow)
-[Deploy](#emphasis)  
+[Asset Inventory](#assetinventory)
+[User Workflow](#userworkflow)  
+[Execution Flow](#executionflow)
+[Deployment Process](#deployment)
+[Airtable](#airtable)
+[Functions](#functions)
+[Google Apps Script](#googleappssript)
+[sources](#sources)
+.    
+
 
 
 ## Overview
@@ -69,9 +77,10 @@ The Airtable API is also limited to 100 results per API call. This is why the pr
 **Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
 
 
-## Prerequisites to Deploy
+## Deployment
+NOTE: The Twilio Cli plugin is typically used for RTC App Deployment. Your application will likely deploy with a title along the lines of "Video-app-xx" and that is expected. 
 
-There is a real-timem video application twilio-cli plugin which I used to deploy the react portion of this application. Your application will likely deploy with a title along the lines of "Video-app-xx" in twilio functions, but this should not be a cause for concern. The application will still function correctly. The instructions below focus on the initial deployment of the React Application. 
+### Prerequisites
 
 1. You must have the following installed in order to deploy the application:
 
@@ -82,13 +91,13 @@ There is a real-timem video application twilio-cli plugin which I used to deploy
 3. An Airtable Account
 
 
-## Install Dependencies
+### Install Dependencies
 
 Run `npm install` to install all dependencies from NPM.
 
 If you want to use `yarn` to install dependencies, first run the [yarn import](https://classic.yarnpkg.com/en/docs/cli/import/) command. This will ensure that yarn installs the package versions that are specified in `package-lock.json`.
 
-## Install Twilio CLI
+#### Install Twilio CLI
 
 The app is deployed to Twilio using the Twilio CLI. Install twilio-cli with:
 
@@ -102,7 +111,7 @@ This app requires an additional plugin. Install the CLI plugin with:
 
     $ twilio plugins:install @twilio-labs/plugin-rtc
 
-## Deploy the app to Twilio
+## Deploying to Twilio Serverless
 Again, this plugin is originally intended to deploy a video application, but will work fine for our purposes. There may be an additional token/recording function in your deployment, but these will not affect the application's functionality. 
 
 Before deploying the app, make sure you are using the correct account on the Twilio CLI (using the command `twilio profiles:list` to check). 
@@ -121,7 +130,7 @@ Overrwrite existing deployment:
     $ npm run deploy:twilio-cli -- --override
 
 
-## A note on configuration
+#### A note on configuration
 
 When this application is deployed, it will automatically populate with my own test customer database and reference my publicly available Twilio Functions. The only aspect a user may truly need to implement on their own is the Studio Flow. 
 
@@ -165,7 +174,7 @@ Implementing the Google Apps Script Trigger is fairly simple and the instruction
 
 ## Sources
 
-I read/borrowed from the following  sources/repos for this idea:
+I used the following resources to assist in building the application:
 
 Free React Template: https://themesberg.com/product/dashboard/volt-react
 
