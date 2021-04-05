@@ -118,8 +118,7 @@ Login to the Twilio CLI. You will be prompted for your Account SID and Auth Toke
 This app requires an additional plugin. Install the CLI plugin with:
 
     $ twilio plugins:install @twilio-labs/plugin-rtc
-<br><br>
-## Deploying to Twilio Serverless
+### Deploying to Twilio Serverless
 Again, this plugin is originally intended to deploy a video application, but will work fine for our purposes. There may be an additional token/recording function in your deployment, but these will not affect the application's functionality. 
 
 Before deploying the app, make sure you are using the correct account on the Twilio CLI (using the command `twilio profiles:list` to check). 
