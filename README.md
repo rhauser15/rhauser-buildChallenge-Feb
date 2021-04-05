@@ -5,7 +5,7 @@ Demo: https://Beyond-Inc.xyz <br>
    </H3>
 </p>
 
-##### Table of Contents  
+#### Table of Contents  
 [Overview](#overview)<br/>
 [Asset Inventory](#assetinventory)<br/>
 [User Workflow](#userworkflow)  
@@ -51,10 +51,10 @@ Please feel free to add your own number to the database for testing.
 
 Beyond Inc users have the ability to access the React Frontend to:
 
-    *Examine an overview of all operations including aggregated customer feedback. (Overview)
-    *Verify customer data through linked Airtable database. (Customer Outreach -> Customer Data)
-    *Manually add a customer to the database. (Customer Outreach -> Add Customer)
-    *Manually Trigger Studio flow to execute customer survey (Customer Outreach -> Trigger Survey)
+   1. Examine an overview of all operations including aggregated customer feedback. (Overview)
+   2. Verify customer data through linked Airtable database. (Customer Outreach -> Customer Data)
+   3. Manually add a customer to the database. (Customer Outreach -> Add Customer)
+   4. Manually Trigger Studio flow to execute customer survey (Customer Outreach -> Trigger Survey)
 
 While users can manually add data, the idea is that the customer database will likely be populated by another service. (When customer completes transaction etc.)
 
