@@ -15,7 +15,7 @@ Demo: https://Beyond-Inc.xyz <br>
 [Functions](#functions)<br/>
 [Google Apps Script](#googleappssript)<br/>
 [sources](#sources)<br/>
-   
+<br><br>
 
 <a name="overview"/>
 
@@ -28,10 +28,9 @@ This is a React Application hosted entirely on Twilio through the use of Twilio 
 Please feel free to add your own number to the database for testing. 
 
 **Video Demo**: xxx
+<br><br>
 
 <a name="assetinventory"/>
-
-
 
 ## Asset Inventory
 
@@ -44,10 +43,9 @@ Please feel free to add your own number to the database for testing.
 **Google Apps Script**: Google Apps Script provides an automated trigger to execute the survey flow around at a time specified by the Admin. (Folder: googleAppsScript)
 
 **Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
+<br><br>
 
 <a name="userworkflow"/>
-
-
 
 ## User Workflow
 
@@ -63,10 +61,9 @@ While users can manually add data, the idea is that the customer database will l
 The Studio flow is also scheduled to run at 12PM MST daily via Google Apps Script, but a manual run can also be triggered above. 
 
 Once completed, survey data will automatically be populated into the airtable database and the aggreagated data overview will be updated. 
+<br><br>
 
 <a name="executionflow"/>
-
-
 
 ## Execution flow
 
@@ -84,6 +81,7 @@ The Airtable API is also limited to 100 results per API call. This is why the pr
 
 
 
+<br><br>
 
 <a name="deployment"/>
 
@@ -120,7 +118,7 @@ Login to the Twilio CLI. You will be prompted for your Account SID and Auth Toke
 This app requires an additional plugin. Install the CLI plugin with:
 
     $ twilio plugins:install @twilio-labs/plugin-rtc
-
+<br><br>
 ## Deploying to Twilio Serverless
 Again, this plugin is originally intended to deploy a video application, but will work fine for our purposes. There may be an additional token/recording function in your deployment, but these will not affect the application's functionality. 
 
@@ -144,9 +142,11 @@ Overrwrite existing deployment:
 
 When this application is deployed, it will automatically populate with my own test customer database and reference my publicly available Twilio Functions. The only aspect a user may truly need to implement on their own is the Studio Flow. 
 
+<br><br>
 
 
 <a name="airtable"/>
+
 ## Airtable configuration
 
 The Airtable configuration is fairly simple on the React end. Only the iframe references in $src/pages/tables/Bootstrap.js need to be modified. Please see the following to receive your own iframe link:
@@ -159,6 +159,7 @@ https://support.airtable.com/hc/en-us/articles/206058268-How-to-use-Airtable-for
 
 You can modify this path in $src/pages/tables/addCustomer.js. 
 
+<br><br>
 
 
 ## Studio Flow
@@ -167,6 +168,7 @@ Please see this guide for importing flows into Studio: https://www.twilio.com/do
 
 <a name="functions"/>
 
+<br><br>
 
 
 ## Functions Configuration
@@ -182,7 +184,8 @@ Once implemented in Functions, you will need to change the URL references in:
     *provision.js --> Point towards new URL for readExecute2
     *readExecute2.js --> point towards new URL for readExecute2
     *src/pages/triggerFunction --> point form submission link towards URL for Provision hosted in twilio. 
-    
+    <br><br>
+
     
 
 <a name="googleappscript"/>
@@ -190,10 +193,9 @@ Once implemented in Functions, you will need to change the URL references in:
 ## Google Apps Script Configuration
 
 Implementing the Google Apps Script Trigger is fairly simple and the instructions are included in the $googleAppsScript/googleAppsScriptTrigger file. 
+<br><br>
 
 <a name="sources"/>
-
-
 
 ## Sources
 
