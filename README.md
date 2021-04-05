@@ -1,7 +1,7 @@
 <p align="center" >
    <H1 align="center"> Beyond Inc Growth Challenge </H1>
    <H3 align ="center">
-Demo: https://BeyondInc.tk <br>
+Demo: https://Beyond-Inc.xyz <br>
    </H3>
 </p>
 
