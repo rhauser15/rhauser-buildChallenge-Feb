@@ -23,7 +23,7 @@ Demo: https://Beyond-Inc.xyz <br>
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
 
-**You can view a currently deployed demo version here**: https://BeyondInc.tk
+**You can view a currently deployed demo version here**: https://Beyond-Inc.xyz
 
 Please feel free to add your own number to the database for testing. 
 
