@@ -31,6 +31,8 @@ Please feel free to add your own number to the database for testing.
 
 <a name="assetinventory"/>
 
+
+
 ## Asset Inventory
 
 **React Application**: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
@@ -44,6 +46,8 @@ Please feel free to add your own number to the database for testing.
 **Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
 
 <a name="userworkflow"/>
+
+
 
 ## User Workflow
 
@@ -62,6 +66,8 @@ Once completed, survey data will automatically be populated into the airtable da
 
 <a name="executionflow"/>
 
+
+
 ## Execution flow
 
    1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
@@ -75,7 +81,6 @@ Once completed, survey data will automatically be populated into the airtable da
 **Limits**: Twilio currently limits the API to 100 concurrent inbound calls. This is why the readExecute2 function is not recommended to be set past 100 records/executions. 
 
 The Airtable API is also limited to 100 results per API call. This is why the provision function will only receive a "page" of 100 records at a time. 
-
 
 
 
@@ -139,6 +144,8 @@ Overrwrite existing deployment:
 
 When this application is deployed, it will automatically populate with my own test customer database and reference my publicly available Twilio Functions. The only aspect a user may truly need to implement on their own is the Studio Flow. 
 
+
+
 <a name="airtable"/>
 ## Airtable configuration
 
@@ -152,11 +159,15 @@ https://support.airtable.com/hc/en-us/articles/206058268-How-to-use-Airtable-for
 
 You can modify this path in $src/pages/tables/addCustomer.js. 
 
+
+
 ## Studio Flow
 
 Please see this guide for importing flows into Studio: https://www.twilio.com/docs/studio/user-guide#importing-and-exporting-flows
 
 <a name="functions"/>
+
+
 
 ## Functions Configuration
 
@@ -171,6 +182,8 @@ Once implemented in Functions, you will need to change the URL references in:
     *provision.js --> Point towards new URL for readExecute2
     *readExecute2.js --> point towards new URL for readExecute2
     *src/pages/triggerFunction --> point form submission link towards URL for Provision hosted in twilio. 
+    
+    
 
 <a name="googleappscript"/>
 
@@ -179,6 +192,8 @@ Once implemented in Functions, you will need to change the URL references in:
 Implementing the Google Apps Script Trigger is fairly simple and the instructions are included in the $googleAppsScript/googleAppsScriptTrigger file. 
 
 <a name="sources"/>
+
+
 
 ## Sources
 
