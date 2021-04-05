@@ -17,8 +17,7 @@ Demo: https://Beyond-Inc.xyz <br>
 [sources](#sources)<br/>
    
 
-
-<a href="overview"/>
+<a name="overview"/>
 ## Overview
 
 This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
@@ -29,6 +28,20 @@ Please feel free to add your own number to the database for testing.
 
 **Video Demo**: xxx
 
+<a name="assetinventory"/>
+## Asset Inventory
+
+**React Application**: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
+
+**Studio Flow**: Twilio Studio provides the backend functionality of the SMS survey. (Folder: twilioStudio)
+
+**Twilio Functions**: The functions incuded are responsible for executing the studio flows and also writing the survey results back to the customer data. (Folder: twilioFunctions)
+
+**Google Apps Script**: Google Apps Script provides an automated trigger to execute the survey flow around at a time specified by the Admin. (Folder: googleAppsScript)
+
+**Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
+
+<a name="userworkflow"/>
 ## User Workflow
 
 Beyond Inc users have the ability to access the React Frontend to:
@@ -44,7 +57,7 @@ The Studio flow is also scheduled to run at 12PM MST daily via Google Apps Scrip
 
 Once completed, survey data will automatically be populated into the airtable database and the aggreagated data overview will be updated. 
 
-
+<a name="executionflow"/>
 ## Execution flow
 
    1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
@@ -63,19 +76,7 @@ The Airtable API is also limited to 100 results per API call. This is why the pr
 
 
 
-## Asset Inventory
-
-**React Application**: This is a single page react application from a modified a template which is referenced below. Functionality includes a consolidated survey results dashboard, visibility into complete customer database, ability to manually add new customers and also the ability to manually trigger the survey flow. 
-
-**Studio Flow**: Twilio Studio provides the backend functionality of the SMS survey. (Folder: twilioStudio)
-
-**Twilio Functions**: The functions incuded are responsible for executing the studio flows and also writing the survey results back to the customer data. (Folder: twilioFunctions)
-
-**Google Apps Script**: Google Apps Script provides an automated trigger to execute the survey flow around at a time specified by the Admin. (Folder: googleAppsScript)
-
-**Airtable**: Airtable serves as the backend database. You will need to use your own Airtable account for a custom implementation. 
-
-
+<a name="deployment"/>
 ## Deployment
 NOTE: The Twilio Cli plugin is typically used for RTC App Deployment. Your application will likely deploy with a title along the lines of "Video-app-xx" and that is expected. 
 
@@ -133,7 +134,7 @@ Overrwrite existing deployment:
 
 When this application is deployed, it will automatically populate with my own test customer database and reference my publicly available Twilio Functions. The only aspect a user may truly need to implement on their own is the Studio Flow. 
 
-
+<a name="airtable"/>
 ## Airtable configuration
 
 The Airtable configuration is fairly simple on the React end. Only the iframe references in $src/pages/tables/Bootstrap.js need to be modified. Please see the following to receive your own iframe link:
@@ -150,8 +151,8 @@ You can modify this path in $src/pages/tables/addCustomer.js.
 
 Please see this guide for importing flows into Studio: https://www.twilio.com/docs/studio/user-guide#importing-and-exporting-flows
 
-
-## Functions
+<a name="functions"/>
+## Functions Configuration
 
 Now that the React application has completed the initial deployment, we need to implement some additional functions surrounding read/execution/write. Please ensure the Provision function is public on Twilio Functions. 
 
@@ -165,12 +166,12 @@ Once implemented in Functions, you will need to change the URL references in:
     *readExecute2.js --> point towards new URL for readExecute2
     *src/pages/triggerFunction --> point form submission link towards URL for Provision hosted in twilio. 
 
-
-## Google Apps Script
+<a name="googleappscript"/>
+## Google Apps Script Configuration
 
 Implementing the Google Apps Script Trigger is fairly simple and the instructions are included in the $googleAppsScript/googleAppsScriptTrigger file. 
 
-
+<a name="sources"/>
 ## Sources
 
 I used the following resources to assist in building the application:
