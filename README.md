@@ -79,9 +79,7 @@ Once completed, survey data will automatically be populated into the airtable da
 
 The Airtable API is also limited to 100 results per API call. This is why the provision function will only receive a "page" of 100 records at a time. 
 
-
-
-<br><br>
+<br>
 
 <a name="deployment"/>
 
@@ -134,7 +132,7 @@ This performs the following steps:
 
 Overrwrite existing deployment: 
 
-    $ npm run deploy:twilio-cli -- --override
+    $ npm run deploy:twilio-cli --override
 
 
 #### A note on configuration
