@@ -14,7 +14,7 @@ Demo: https://Beyond-Inc.xyz <br>
 [Airtable](#airtable)<br/>
 [Functions](#functions)<br/>
 [Google Apps Script](#googleappssript)<br/>
-[sources](#sources)<br/>
+[Sources](#sources)<br/>
 <br><br>
 
 <a name="overview"/>
