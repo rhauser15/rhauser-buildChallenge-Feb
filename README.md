@@ -71,7 +71,7 @@ Once completed, survey data will automatically be populated into the airtable da
    1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
    2. The /provision function will then count the total number of records in the database. 
    3. Once finished /provision will call /readExecute2. This function will execute studio flows in batches. (Adjustable from 1 - 100 studio flows at a time). 
-   4. /readExecute2 will continue calling itself until the entire database of users has been surveyed. Users that have not completed a survey should be skipped. 
+   4. /readExecute2 will continue calling itself until the entire database of users has been surveyed. Users that have already completed a survey will be skipped. 
    5. The studio flows will ask the users a combination of Free Form/numerically rated questions. Questions 2 and 4 will change slighly based on results given by initial responses.
    6. Response data will be written by calling the /write function when a user responds. If the entire survey is completed, the "customerCompleted" attribute of the database will be set to "true". 
 
