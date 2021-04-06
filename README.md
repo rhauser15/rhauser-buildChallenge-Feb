@@ -9,7 +9,7 @@ Demo: https://Beyond-Inc.xyz <br>
 [Overview](#overview)<br/>
 [Asset Inventory](#assetinventory)<br/>
 [User Workflow](#userworkflow)  
-[Execution Flow](#executionflow)<br/>
+[Survey Execution Flow](#executionflow)<br/>
 [Deployment Process](#deployment)<br/>
 [Airtable](#airtable)<br/>
 [Functions](#functions)<br/>
@@ -20,8 +20,9 @@ Demo: https://Beyond-Inc.xyz <br>
 <a name="overview"/>
 
 ## Overview
+Beyond Inc is a debt consolidation company seeking the best mechanism to receive customer feedback via SMS. The Solutions Engineering at Twilio team has been tasked with creating a customized demonstration to present to Beyond Inc as this may be a large opportunity. 
 
-This is a React Application hosted entirely on Twilio through the use of Twilio Serverless Service and integrating variety of other products including: Twilio Studio, Google Apps Script and Airtable. 
+The following is an example React Application hosted entirely on Twilio through the use of Twilio Serverless Service. The react application connects a customer database powered by Airtable to a Twilio Studio flow which begins a dynamic customer survey via SMS.  
 
 **You can view a currently deployed demo version here**: https://Beyond-Inc.xyz
 
@@ -65,7 +66,7 @@ Once completed, survey data will automatically be populated into the airtable da
 
 <a name="executionflow"/>
 
-## Execution flow
+## Survey Execution flow
 
    1. When the flow is executed manually or via a separate service, the /provision function will be activated. 
    2. The /provision function will then count the total number of records in the database. 
@@ -75,7 +76,7 @@ Once completed, survey data will automatically be populated into the airtable da
    6. Response data will be written by calling the /write function when a user responds. If the entire survey is completed, the "customerCompleted" attribute of the database will be set to "true". 
 
 
-**Limits**: Twilio currently limits the API to 100 concurrent inbound calls. This is why the readExecute2 function is not recommended to be set past 100 records/executions. 
+**Limits**: Twilio currently limits the API to 100 concurrent inbound calls. The application design will still complete all executions, but is designed around this limit. (readExecute2 is not recommended to exceed 100 studio executions at a time.)
 
 The Airtable API is also limited to 100 results per API call. This is why the provision function will only receive a "page" of 100 records at a time. 
 
