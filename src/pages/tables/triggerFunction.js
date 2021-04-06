@@ -22,7 +22,12 @@ export default () => {
             Survey will automatically run daily at 12PM MST daily. Press button below to trigger manually. 
             <br></br>
             <br></br>
-            <button style={{height:50, width:200}}> Start Survey</button>
+            <iframe name="votar" style={{height: 0}}></iframe>
+            <form action="https://buildchallengeplaceholder-6271.twil.io/provision" method="POST" target="votar">
+                
+                  <button>Start Customer Survey</button>
+            
+              </form>
           </p>
           
           
